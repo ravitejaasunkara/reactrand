@@ -8,7 +8,7 @@ export default function App() {
   const [disableInput, setDisableInput] = useState(false);
   const inpRef = useRef(null);
   useEffect(() => {
-    let number = Math.floor(Math.random() * 20) + 1;
+    let number = Math.floor(Math.random() * 3) + 1;
     setRand(number);
   }, [rand]);
   const grabNumber = (e) => {
@@ -22,6 +22,8 @@ export default function App() {
       if (chances - 1 === 0) {
         setDisableInput(true);
       }
+      inpRef.current.focus();
+      inpRef.current.select();
     }
   };
   const playAgain = () => {
@@ -33,7 +35,7 @@ export default function App() {
   };
   return (
     <div className="container">
-      <h2>Guess the number</h2>
+      <h4>Guess the number in between 1 to 10</h4>
       <input
         type="number"
         onChange={(e) => setValue(e.target.value)}
@@ -44,6 +46,7 @@ export default function App() {
         Guess
       </button>
       {chances > 0 && !guessed && <p>chances left {chances}</p>}
+
       {chances === 0 && !guessed && <p>Gameover the number is {rand}</p>}
       {guessed && (
         <p>
