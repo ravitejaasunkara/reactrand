@@ -35,7 +35,10 @@ export default function App() {
   };
   return (
     <div className="container">
-      <h4>Guess the number in between 1 to 10</h4>
+      <h4>
+        I have picked a number between 1 to 10, please guess it, you have three
+        chances.
+      </h4>
       <input
         type="number"
         onChange={(e) => setValue(e.target.value)}
